@@ -20,4 +20,8 @@ class PagesController extends Controller
     public function home() {
         return view('frontend.pages.home');
     }
+
+    public function content() {
+        return view('admin.views.content');
+    }
 }

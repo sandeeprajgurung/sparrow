@@ -18,6 +18,8 @@ mix.js('resources/js/app.js', 'public/js')
         require('autoprefixer'),
     ]);
 
+mix.postCss('resources/css/admin.css', 'public/css');
+
 if (mix.inProduction()) {
     mix.version();
 }

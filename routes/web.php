@@ -19,3 +19,7 @@ Route::get('/', [PagesController::class, 'home']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/content', [PagesController::class, 'content'])->name('content');
+
+// require_once '../vendor/laravel/jetstream/routes/livewire.php';
