@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -13,7 +14,10 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $contact = Contact::all();
+        // die('here');
+        return view('contact.index', compact('contact'));
+        // return view('contact.layout');
     }
 
     /**
@@ -23,7 +27,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('contact.create');
     }
 
     /**
@@ -34,51 +38,63 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Contact::create($request->all());
+        return redirect()->route('contact.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Contact $contact)
     {
-        //
+        return view('contact.index', compact('contact'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Contact $contact)
     {
-        //
+        return view('contact.edit',compact('contact'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Contact $contact)
     {
-        //
+        $request->validate([
+            'address' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+        ]);
+  
+        $contact->update($request->all());
+  
+        return redirect()->route('contact.index')
+                        ->with('success','Contact updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+        return redirect()->route('contact.index')
+                        ->with('success','Contact deleted successfully');
     }
 }

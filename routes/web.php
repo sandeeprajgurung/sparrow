@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +22,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/content', [PagesController::class, 'content'])->name('content');
+
+// Route::resource('content/contact','ContactController');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/content/contact', [ContactController::class, 'index'])->name('contact');
+
+// Route::resource('contact',ContactController::class);
+
+Route::middleware(['auth:sanctum', 'verified'])->post('/content/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // require_once '../vendor/laravel/jetstream/routes/livewire.php';
