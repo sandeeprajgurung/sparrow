@@ -31,4 +31,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/content/contact', [Contac
 
 Route::middleware(['auth:sanctum', 'verified'])->post('/content/contact', [ContactController::class, 'store'])->name('contact.store');
 
+Route::middleware(['auth:sanctum', 'verified'])->put('/content/contact/{id}', [ContactController::class, 'update'])->name('contact.update');
+
 // require_once '../vendor/laravel/jetstream/routes/livewire.php';
