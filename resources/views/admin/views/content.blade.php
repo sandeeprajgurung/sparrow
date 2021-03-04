@@ -70,17 +70,18 @@
                     <div
                         class="flex flex-col w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <form action="#" method="POST">
+                            <form action="{{ route('home') }}" method="POST" role="form" enctype="multipart/form-data">
+                                @csrf
                                 <div class="col-span-6 mb-6">
-                                    <label for="home_title"
+                                    <label for="title"
                                         class="block text-sm font-medium text-gray-700">Title</label>
-                                    <input type="text" name="home_title" id="home_title"
+                                    <input type="text" name="title" id="title"
                                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                                 <div class="col-span-6 mb-6">
-                                    <label for="home_description"
+                                    <label for="description"
                                         class="block text-sm font-medium text-gray-700">Description</label>
-                                    <input type="text" name="home_description" id="home_description"
+                                    <input type="text" name="description" id="description"
                                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                                 <div>
@@ -97,10 +98,10 @@
                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
                                             <div class="flex text-sm text-gray-600">
-                                                <label for="file-upload"
+                                                <label for="file_upload"
                                                     class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                                                     <span>Upload a file</span>
-                                                    <input id="file-upload" name="file-upload" type="file"
+                                                    <input id="file_upload" name="file_upload" type="file"
                                                         class="sr-only">
                                                 </label>
                                                 <p class="pl-1">or drag and drop</p>
