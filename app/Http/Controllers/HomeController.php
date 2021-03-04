@@ -24,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
+        $content = Home::get()->where('status', '=', '1');
+        return view('admin.views.content')->with(compact('content'));
     }
 
     /**
@@ -61,7 +62,7 @@ class HomeController extends Controller
         // Make a image name based on user name and current timestamp
         $name = Str::slug($request->input('name')).'_'.time();
         // Define folder path
-        $folder = 'admin/home/uploads';
+        $folder = 'admin/home/uploads/';
         // Make a file path where image will be stored [ folder path + file name + file extension]
         $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
         // Upload image

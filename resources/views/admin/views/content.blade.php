@@ -70,7 +70,7 @@
                     <div
                         class="flex flex-col w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <form action="{{ route('home') }}" method="POST" role="form" enctype="multipart/form-data">
+                            <form action="{{ route('content.home') }}" method="POST" role="form" enctype="multipart/form-data">
                                 @csrf
                                 <div class="col-span-6 mb-6">
                                     <label for="title"
@@ -119,6 +119,19 @@
                                     </button>
                                 </div>
                             </form>
+
+                            <div class="content-review">
+                                <p class="text-lg font-semibold tracking-widest text-gray-900 uppercase mb-5">Current layout</p>
+                                @if($content->isNotEmpty())
+                                <div class="w-full">
+                                    <img src="{{ asset('storage/'.$content->first()->file_upload) }}" alt="Girl in a jacket">
+                                    <div class="content-review-text">
+                                        <p class="mb-3">{{ $content->first()->title }}</p>
+                                        <p class="">{{$content->first()->description }}</p>
+                                    </div>
+                                </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
