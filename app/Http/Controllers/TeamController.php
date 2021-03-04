@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class TeamController extends Controller
 {
@@ -44,14 +45,10 @@ class TeamController extends Controller
 
         $team = new Team;
         if ($request->file('image')) {
-          $image = $request->file('image');
-          $imageName = $image->getClientOriginalName();
-          $folder = 'admin/home/uploads';
-          $filepath = $folder . $imageName ;
-          $path = $request->file('image')->storeAs($image, $folder, 'public', $imageName);
-        //   $path = $request->file('image')->storeAs('uploads', $imageName, 'public');
-        //   $this->uploadOne($image, $folder, 'public', $imageName);
-          $team->image = $filepath;
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $path = $image->storeAs('Teams', $imageName, 'public');
+            $team->image = $path;
         }
         else{
             $team->image = '';
@@ -96,7 +93,30 @@ class TeamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+          'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $team = Team::find($id);
+        if($team->image){
+            Storage::delete('/public/' . $team->image);
+        }
+
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $path = $image->storeAs('Teams', $imageName, 'public');
+            $team->image = $path;
+        }
+        else{
+            $team->image = '';
+        }
+
+        $team->name = $request->name;
+        $team->designation = $request->designation;
+        $team->save();
+
+        return redirect()->route('team');
     }
 
     /**
@@ -107,8 +127,10 @@ class TeamController extends Controller
      */
     public function destroy(Team $team, $id)
     {
+        
         $team = Team::find($id);
-        $team->delete();
+        Storage::delete('/public/' . $team->image);
+        $team -> delete();
         return redirect()->route('team')
                         ->with('success','deleted successfully');
     }

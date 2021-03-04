@@ -164,7 +164,9 @@
 
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                                 <div class="flex-shrink-0 h-10 w-10">
-                                                    <img class="h-10 w-10 rounded-full" src="Screen.png" alt="img">
+                                                    @if($team->image)
+                                                        <img class="h-10 w-10 rounded-full" src="{{ asset('storage/' . $team->image) }}" alt="img">
+                                                    @endif
                                                 </div>
                                                     
                                                 </td>
