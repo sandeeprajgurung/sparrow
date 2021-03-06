@@ -7,6 +7,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\TestimonialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,3 +51,10 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/content/home', [HomeCont
 //Services
 Route::middleware(['auth:sanctum', 'verified'])->get('/services', [ServicesController::class, 'index'])->name('content.services');
 Route::middleware(['auth:sanctum', 'verified'])->post('/services', [ServicesController::class, 'store'])->name('content.services.store');
+
+//Testimonial
+Route::middleware(['auth:sanctum', 'verified'])->get('/content/testimonial', [TestimonialController::class, 'index'])->name('testimonial');
+Route::middleware(['auth:sanctum', 'verified'])->post('/content/testimonial', [TestimonialController::class, 'store'])->name('testimonial.store');
+Route::middleware(['auth:sanctum', 'verified'])->delete('/content/testimonial/{id}', [TestimonialController::class, 'destroy'])->name('testimonial.destroy');
+Route::middleware(['auth:sanctum', 'verified'])->get('/content/testimonial/{id}', [TestimonialController::class, 'edit'])->name('testimonial.edit');
+Route::middleware(['auth:sanctum', 'verified'])->put('/content/testimonial/{id}', [TestimonialController::class, 'update'])->name('testimonial.update');

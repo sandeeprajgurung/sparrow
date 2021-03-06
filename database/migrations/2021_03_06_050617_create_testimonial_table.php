@@ -16,13 +16,11 @@ class CreateTestimonialTable extends Migration
     {
         Schema::create('testimonial', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('organization');
             $table->string('statement');
-            $table->integer('team_id')->unsigned()->index();
+            $table->string('image');
             $table->timestamps();
-        });
-
-        Schema::table('testimonial', function($table) {
-             $table->foreign('team_id')->references('id')->on('team')->onDelete('cascade');
         });
     }
 

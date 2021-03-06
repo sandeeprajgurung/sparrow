@@ -47,7 +47,7 @@ class TeamController extends Controller
         if ($request->file('image')) {
             $image = $request->file('image');
             $imageName = $image->getClientOriginalName();
-            $path = $image->storeAs('Teams', $imageName, 'public');
+            $path = $image->storeAs('Team', $imageName, 'public');
             $team->image = $path;
         }
         else{
@@ -99,13 +99,13 @@ class TeamController extends Controller
 
         $team = Team::find($id);
         if($team->image){
-            Storage::delete('/public/' . $team->image);
+            \Storage::delete('/public/' . $team->image);
         }
 
         if ($request->file('image')) {
             $image = $request->file('image');
             $imageName = $image->getClientOriginalName();
-            $path = $image->storeAs('Teams', $imageName, 'public');
+            $path = $image->storeAs('Team', $imageName, 'public');
             $team->image = $path;
         }
         else{
@@ -129,7 +129,8 @@ class TeamController extends Controller
     {
         
         $team = Team::find($id);
-        Storage::delete('/public/' . $team->image);
+        if($team->image)
+            \Storage::delete('/public/' . $team->image);
         $team -> delete();
         return redirect()->route('team')
                         ->with('success','deleted successfully');

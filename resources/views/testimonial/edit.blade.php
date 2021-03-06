@@ -34,6 +34,8 @@
                                 href="#">Protfolio</a>
                             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-gray-200 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                 href="{{ route('team') }}">Team</a>
+                            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-gray-200 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                href="{{ route('testimonial') }}">Testimonial</a>
                             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                 href="{{ route('faq') }}">FAQ</a>
                             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
@@ -72,20 +74,28 @@
                     <div
                         class="flex flex-col w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <form action="{{ route('team.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('testimonial.update', $testimonial->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                                 <div class="col-span-6 mb-6">
                                     <label for="name"
                                         class="block text-sm font-medium text-gray-700">Name</label>
-                                    <input type="text" name="name" id="name"
+                                    <input type="text" name="name" id="name" value="{{ $testimonial->name }}"
+                                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"> 
+                                </div>
+                                <div class="col-span-6 mb-6">
+                                    <label for="organization"
+                                        class="block text-sm font-medium text-gray-700">Organization</label>
+                                    <input type="text" name="organization" id="organization" value="{{ $testimonial->organization }}"
                                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                                 <div class="col-span-6 mb-6">
-                                    <label for="designation"
-                                        class="block text-sm font-medium text-gray-700">Designation</label>
-                                    <input type="text" name="designation" id="designation"
-                                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <label for="statement"
+                                        class="block text-sm font-medium text-gray-700">Statement</label>
+                                    <input type="text" name="statement" id="statement" value="{{ $testimonial->statement }}"
+                                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"> 
                                 </div>
+                                <div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700">
                                         Image
@@ -121,76 +131,7 @@
                                     </button>
                                 </div>
                             </form>
-                            <div>
-                                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                                    Team List
-                                </h2>
-                            </div>
-                                
-                            <!-- Tailwind CSS table -->
-                            <div class="flex flex-col">
-                            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                    <table class="min-w-full divide-y divide-gray-200">
-                                    <thead class="bg-gray-50">
-                                        <tr>
-                                
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Name
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Designation
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Image
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Action
-                                        </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="bg-white divide-y divide-gray-200">
-                                        @foreach ($teams as $team)
-                                            <tr>
-
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                    {{ $team->name }}
-                                                </td>
-
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                    {{ $team->designation }}
-                                                </td>
-
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                <div class="flex-shrink-0 h-10 w-10">
-                                                    @if($team->image)
-                                                        <img class="h-10 w-10 rounded-full" src="{{ asset('storage/' . $team->image) }}" alt="img">
-                                                    @endif
-                                                </div>
-                                                </td>
-
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                                    <a href="{{ route('team.edit', $team->id) }}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
-                                                    <form class="inline-block" action="{{ route('team.destroy', $team->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                         <input type="hidden" name="_method" value="DELETE"> 
-                                                         <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}">   -->
-                                                        <input type="submit" class="text-red-600 hover:text-red-900 mb-2 mr-2" value="Delete">
-                                                    </form>
-                                                    
-                                                </td>
-                                            </tr>
-                                        @endforeach
-
-                                    </tbody>
-                                    </table>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                            <!-- Tailwind CSS table -->
+                            
                         </div>
                     </div>
                 </div>
