@@ -23,20 +23,15 @@
 
     <div class="services-review">
         <p class="text-lg font-semibold tracking-widest text-gray-900 uppercase mb-5">Current layout</p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="mb-3">
-                <p>fhdskjfhdsjkfhjkds</p>
-                <p>nhflkdsjfkldjslkf jdsklfjkdlsjf kldsjfk ldsjkfldjsklf jdsklfjkdlsjfklsjfl kdsjkfljsd klfjksdlfjlkds</p>
+        @if($services)
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            @foreach ($services as $service)
+            <div class="services-review-block">
+                <p>{{ $service->title }}</p>
+                <p>{{ $service->description }}</p>
             </div>
-            <div class="mb-3">
-                <p>fhdskjfhdsjkfhjkds</p>
-                <p>nhflkdsjfkldjslkfj dsklfjkd lsjfklds jfklds jkfldjsk lfjdsklfjkdlsjf klsjflkds jkfljsdklfjks dlfjlkds</p>
-            </div>
-            <div class="mb-3">
-                <p>fhdskjfhdsjkfhjkds</p>
-                <p>nhflkdsjfkldjslkfj dsklfjkd lsjfkldsj fkldsjk fldjsklfjdsklfjkd lsjfklsjflkdsj kfljsd klfj ksdl fjlkds</p>
-            </div>
+            @endforeach
         </div>
+        @endif
     </div>
 </div>

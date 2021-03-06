@@ -25,3 +25,19 @@
     text-align: center;
     font-weight: 600;
 }
+
+/*
+*   SERVICES
+*/
+.services .services-review .services-review-block {
+    margin-bottom: 20px;
+    padding: 30px;
+    border-radius: 6px;
+    background: #252525;
+    color: #ffffff;
+}
+.services .services-review .services-review-block p:first-child {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}

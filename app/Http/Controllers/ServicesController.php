@@ -15,7 +15,8 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        return view('admin.views.content');
+        $services = Service::get();
+        return view('admin.views.content')->with(compact('services'));
     }
 
     /**
