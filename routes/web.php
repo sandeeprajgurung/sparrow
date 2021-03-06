@@ -50,7 +50,6 @@ Route::middleware(['auth:sanctum', 'verified'])->delete('/content/faq/{id}', [FA
 Route::middleware(['auth:sanctum', 'verified'])->post('/content/home', [HomeController::class, 'store'])->name('content.home');
 
 //Services
-<<<<<<< HEAD
 Route::middleware(['auth:sanctum', 'verified'])->get('/services', [ServicesController::class, 'index'])->name('content.services');
 Route::middleware(['auth:sanctum', 'verified'])->post('/services', [ServicesController::class, 'store'])->name('content.services.store');
 
@@ -60,7 +59,4 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/content/testimonial', [T
 Route::middleware(['auth:sanctum', 'verified'])->delete('/content/testimonial/{id}', [TestimonialController::class, 'destroy'])->name('testimonial.destroy');
 Route::middleware(['auth:sanctum', 'verified'])->get('/content/testimonial/{id}', [TestimonialController::class, 'edit'])->name('testimonial.edit');
 Route::middleware(['auth:sanctum', 'verified'])->put('/content/testimonial/{id}', [TestimonialController::class, 'update'])->name('testimonial.update');
-=======
-Route::middleware(['auth:sanctum', 'verified'])->get('/content/services', [ServicesController::class, 'index'])->name('content.services');
-Route::middleware(['auth:sanctum', 'verified'])->post('/content/services', [ServicesController::class, 'store'])->name('content.services.store');
->>>>>>> 15b2288be1d3a10ef17e178a0c3661ba30db19f3
+
