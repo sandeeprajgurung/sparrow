@@ -5,6 +5,8 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\FAQController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ServicesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +25,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/content', [PagesController::class, 'content'])->name('content');
+Route::middleware(['auth:sanctum', 'verified'])->get('/content', [HomeController::class, 'index'])->name('content.index');
 
 //Content
 Route::middleware(['auth:sanctum', 'verified'])->get('/content/contact', [ContactController::class, 'index'])->name('contact');
@@ -43,3 +45,8 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/content/faq', [FAQContro
 Route::middleware(['auth:sanctum', 'verified'])->get('/content/faq/{id}', [FAQController::class, 'edit'])->name('faq.edit');
 Route::middleware(['auth:sanctum', 'verified'])->put('/content/faq/{id}', [FAQController::class, 'update'])->name('faq.update');
 Route::middleware(['auth:sanctum', 'verified'])->delete('/content/faq/{id}', [FAQController::class, 'destroy'])->name('faq.destroy');
+Route::middleware(['auth:sanctum', 'verified'])->post('/content/home', [HomeController::class, 'store'])->name('content.home');
+
+//Services
+Route::middleware(['auth:sanctum', 'verified'])->get('/services', [ServicesController::class, 'index'])->name('content.services');
+Route::middleware(['auth:sanctum', 'verified'])->post('/services', [ServicesController::class, 'store'])->name('content.services.store');
