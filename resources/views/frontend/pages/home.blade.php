@@ -2,6 +2,7 @@
 @section('main-content')
 
 <!-- ======= Hero Section ======= -->
+@if ($home->isNotEmpty())
 <section id="hero" class="d-flex align-items-center">
 
 <div class="container-fluid" data-aos="zoom-out" data-aos-delay="100">
@@ -9,8 +10,8 @@
     <div class="col-xl-10">
       <div class="row">
         <div class="col-xl-5">
-          <h1>Bettter digital experience with Presento</h1>
-          <h2>We are team of talanted designers making websites with Bootstrap</h2>
+          <h1>{{ $home->first()->title }}</h1>
+          <h2>{{ $home->first()->description }}</h2>
           <a href="#about" class="btn-get-started scrollto">Get Started</a>
         </div>
       </div>
@@ -19,6 +20,7 @@
 </div>
 
 </section><!-- End Hero -->
+@endif
 
 <main id="main">
 
@@ -265,6 +267,7 @@
 </section><!-- End Tabs Section -->
 
 <!-- ======= Services Section ======= -->
+@if($services->isNotEmpty())
 <section id="services" class="services section-bg ">
   <div class="container" data-aos="fade-up">
 
@@ -274,14 +277,16 @@
     </div>
 
     <div class="row">
+      @foreach ($services as $service)
       <div class="col-md-6">
         <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
           <i class="icofont-computer"></i>
-          <h4><a href="#">Lorem Ipsum</a></h4>
-          <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+          <h4><a href="/services/{{ $service->link }}">{{ $service->title }}</a></h4>
+          <p>{{ $service->description }}</p>
         </div>
       </div>
-      <div class="col-md-6 mt-4 mt-md-0">
+      @endforeach
+      {{-- <div class="col-md-6 mt-4 mt-md-0">
         <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
           <i class="icofont-chart-bar-graph"></i>
           <h4><a href="#">Dolor Sitema</a></h4>
@@ -315,11 +320,13 @@
           <h4><a href="#">Eiusmod Tempor</a></h4>
           <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
         </div>
-      </div>
+      </div> --}}
     </div>
 
   </div>
-</section><!-- End Services Section -->
+</section>
+@endif
+<!-- End Services Section -->
 
 <!-- ======= Portfolio Section ======= -->
 <section id="portfolio" class="portfolio">
@@ -629,6 +636,7 @@
 </section><!-- End Pricing Section -->
 
 <!-- ======= Frequently Asked Questions Section ======= -->
+@if($faqs->isNotEmpty())
 <section id="faq" class="faq">
   <div class="container" data-aos="fade-up">
 
@@ -637,17 +645,18 @@
     </div>
 
     <ul class="faq-list" data-aos="fade-up">
-
+      @foreach ($faqs as $faq)
       <li>
-        <a data-toggle="collapse" class="collapsed" href="#faq1">Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
-        <div id="faq1" class="collapse" data-parent=".faq-list">
+        <a data-toggle="collapse" class="collapsed" href="#faq{{ $faq->id }}"> {{ $faq->question }} <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+        <div id="faq{{ $faq->id }}" class="collapse" data-parent=".faq-list">
           <p>
-            Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+            {{ $faq->answer }}
           </p>
         </div>
       </li>
+      @endforeach
 
-      <li>
+      {{-- <li>
         <a data-toggle="collapse" href="#faq2" class="collapsed">Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
         <div id="faq2" class="collapse" data-parent=".faq-list">
           <p>
@@ -690,14 +699,17 @@
             Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
           </p>
         </div>
-      </li>
+      </li> --}}
 
     </ul>
 
   </div>
-</section><!-- End Frequently Asked Questions Section -->
+</section>
+@endif
+<!-- End Frequently Asked Questions Section -->
 
 <!-- ======= Team Section ======= -->
+@if($teams->isNotEmpty())
 <section id="team" class="team section-bg">
   <div class="container" data-aos="fade-up">
 
@@ -707,26 +719,23 @@
     </div>
 
     <div class="row">
-
+      @foreach ($teams as $team)
       <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
         <div class="member" data-aos="fade-up" data-aos-delay="100">
           <div class="member-img">
-            <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-            <div class="social">
-              <a href=""><i class="icofont-twitter"></i></a>
-              <a href=""><i class="icofont-facebook"></i></a>
-              <a href=""><i class="icofont-instagram"></i></a>
-              <a href=""><i class="icofont-linkedin"></i></a>
-            </div>
+            @if($team->image)
+            <img src="{{ asset('storage/' . $team->image) }}" class="img-fluid" alt="">
+            @endif
           </div>
           <div class="member-info">
-            <h4>Walter White</h4>
-            <span>Chief Executive Officer</span>
+            <h4>{{ $team->name }}</h4>
+            <span>{{ $team->designation }}</span>
           </div>
         </div>
       </div>
+      @endforeach
 
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+      {{-- <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
         <div class="member" data-aos="fade-up" data-aos-delay="200">
           <div class="member-img">
             <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
@@ -778,14 +787,16 @@
             <span>Accountant</span>
           </div>
         </div>
-      </div>
-
+      </div> --}}
     </div>
 
   </div>
-</section><!-- End Team Section -->
+</section>
+@endif
+<!-- End Team Section -->
 
 <!-- ======= Contact Section ======= -->
+@if($contact->isNotEmpty())
 <section id="contact" class="contact">
   <div class="container" data-aos="fade-up">
 
@@ -803,21 +814,21 @@
             <div class="info-box">
               <i class="bx bx-map"></i>
               <h3>Our Address</h3>
-              <p>A108 Adam Street, New York, NY 535022</p>
+              <p>{{ $contact->first()->address }}</p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="info-box mt-4">
               <i class="bx bx-envelope"></i>
               <h3>Email Us</h3>
-              <p>info@example.com<br>contact@example.com</p>
+              <p>{{ $contact->first()->email }}</p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="info-box mt-4">
               <i class="bx bx-phone-call"></i>
               <h3>Call Us</h3>
-              <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+              <p>+977 {{ $contact->first()->phone }}</p>
             </div>
           </div>
         </div>
@@ -856,7 +867,9 @@
     </div>
 
   </div>
-</section><!-- End Contact Section -->
+</section>
+@endif
+<!-- End Contact Section -->
 
 </main><!-- End #main -->
 

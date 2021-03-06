@@ -20,6 +20,7 @@ use App\Http\Controllers\ServicesController;
 */
 
 Route::get('/', [PagesController::class, 'home']);
+Route::get('/services', [PagesController::class, 'services']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -48,5 +49,5 @@ Route::middleware(['auth:sanctum', 'verified'])->delete('/content/faq/{id}', [FA
 Route::middleware(['auth:sanctum', 'verified'])->post('/content/home', [HomeController::class, 'store'])->name('content.home');
 
 //Services
-Route::middleware(['auth:sanctum', 'verified'])->get('/services', [ServicesController::class, 'index'])->name('content.services');
-Route::middleware(['auth:sanctum', 'verified'])->post('/services', [ServicesController::class, 'store'])->name('content.services.store');
+Route::middleware(['auth:sanctum', 'verified'])->get('/content/services', [ServicesController::class, 'index'])->name('content.services');
+Route::middleware(['auth:sanctum', 'verified'])->post('/content/services', [ServicesController::class, 'store'])->name('content.services.store');
