@@ -6,3 +6,22 @@
     position: relative;
     padding-top: 82px;
 }
+
+/*
+*
+*   CONTENT
+*
+*/
+.content-review {
+    position: relative;
+}
+
+.content-review .content-review-text {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    color: #ffffff;
+    width: calc(100% - 70px);
+    text-align: center;
+    font-weight: 600;
+}

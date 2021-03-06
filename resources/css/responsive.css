@@ -1,0 +1,20 @@
+@media (min-width: 640px) {
+    .content-review .content-review-text {
+        font-size: 20px;
+        top: 30%;
+        left: 7%;
+        text-align: left;
+    }
+}
+
+@media (min-width: 1280px) {
+    .content-review .content-review-text {
+        font-size: 20px;
+        text-align: left;
+        width: calc(100% - 450px);
+        font-size: 34px;
+    }
+    .content-review .content-review-text p:last-child {
+        font-size: 24px;
+    }
+}
