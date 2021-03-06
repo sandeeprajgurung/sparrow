@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ServicesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/content', [HomeController
 
 Route::middleware(['auth:sanctum', 'verified'])->post('/content/home', [HomeController::class, 'store'])->name('content.home');
 
-// require_once '../vendor/laravel/jetstream/routes/livewire.php';
+Route::middleware(['auth:sanctum', 'verified'])->get('/services', [ServicesController::class, 'index'])->name('content.services');
+
+Route::middleware(['auth:sanctum', 'verified'])->post('/services', [ServicesController::class, 'store'])->name('content.services.store');
