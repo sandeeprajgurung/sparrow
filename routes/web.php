@@ -62,9 +62,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/content/testimonial/{id}'
 Route::middleware(['auth:sanctum', 'verified'])->put('/content/testimonial/{id}', [TestimonialController::class, 'update'])->name('testimonial.update');
 
 //Testimonial
-Route::middleware(['auth:sanctum', 'verified'])->get('/content/testimonial', [ExternalServiceController::class, 'index'])->name('testimonial');
-Route::middleware(['auth:sanctum', 'verified'])->post('/content/testimonial', [ExternalServiceController::class, 'store'])->name('testimonial.store');
-Route::middleware(['auth:sanctum', 'verified'])->delete('/content/testimonial/{id}', [ExternalServiceController::class, 'destroy'])->name('testimonial.destroy');
-Route::middleware(['auth:sanctum', 'verified'])->get('/content/testimonial/{id}', [ExternalServiceController::class, 'edit'])->name('testimonial.edit');
-Route::middleware(['auth:sanctum', 'verified'])->put('/content/testimonial/{id}', [ExternalServiceController::class, 'update'])->name('testimonial.update');
+Route::middleware(['auth:sanctum', 'verified'])->get('/content/service', [ExternalServiceController::class, 'index'])->name('service');
+Route::middleware(['auth:sanctum', 'verified'])->post('/content/service', [ExternalServiceController::class, 'store'])->name('service.store');
+Route::middleware(['auth:sanctum', 'verified'])->delete('/content/service/{id}', [ExternalServiceController::class, 'destroy'])->name('service.destroy');
+Route::middleware(['auth:sanctum', 'verified'])->get('/content/service/{id}', [ExternalServiceController::class, 'edit'])->name('service.edit');
+Route::middleware(['auth:sanctum', 'verified'])->put('/content/service/{id}', [ExternalServiceController::class, 'update'])->name('service.update');
 

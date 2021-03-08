@@ -9,5 +9,5 @@ class ExternalService extends Model
 {
     use HasFactory;
     protected $table = 'external_service';
-    protected $fillable = ['name','description'];
+    protected $fillable = ['name', 'description'];
 }

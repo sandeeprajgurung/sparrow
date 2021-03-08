@@ -33,8 +33,8 @@
 
                             <div @click.away="open = false" class="relative" x-data="{ open: false }">
                                 <button @click="open = !open"
-                                    class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                                    <a href="{{ route('content.services') }}">External Services</a>
+                                    class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-gray-200 rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                                    <a href="{{ route('service') }}">External Services</a>
                                     <svg fill="currentColor" viewBox="0 0 20 20"
                                         :class="{'rotate-180': open, 'rotate-0': !open}"
                                         class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
@@ -65,7 +65,7 @@
                                 href="{{ route('testimonial') }}">Testimonial</a>
                             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                 href="{{ route('faq') }}">FAQ</a>
-                            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-gray-200 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                 href="{{ route('contact') }}">Contact</a>
                             <div @click.away="open = false" class="relative" x-data="{ open: false }">
                                 <button @click="open = !open"
@@ -101,24 +101,24 @@
                     <div
                         class="flex flex-col w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <form action="{{ route('contact.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('service.store') }}" method="POST">
                             @csrf
                                 <div class="col-span-6 mb-6">
-                                    <label for="address"
-                                        class="block text-sm font-medium text-gray-700">Address</label>
-                                    <input type="text" name="address" id="address"
+                                    <label for="name"
+                                        class="block text-sm font-medium text-gray-700">Name</label>
+                                    <input type="text" name="name" id="name"
                                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                                 <div class="col-span-6 mb-6">
-                                    <label for="email"
-                                        class="block text-sm font-medium text-gray-700">Email</label>
-                                    <input type="email" name="email" id="email"
+                                    <label for="icon"
+                                        class="block text-sm font-medium text-gray-700">Icon</label>
+                                    <input type="text" name="icon" id="icon"
                                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                                 <div class="col-span-6 mb-6">
-                                    <label for="phone"
-                                        class="block text-sm font-medium text-gray-700">Phone no</label>
-                                    <input type="number" name="phone" id="phone"
+                                    <label for="description"
+                                        class="block text-sm font-medium text-gray-700">Description</label>
+                                    <input type="text" name="description" id="description"
                                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                                 
@@ -129,6 +129,69 @@
                                     </button>
                                 </div>
                             </form>
+                            <div>
+                                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                                    External Service List
+                                </h2>
+                            </div>
+                                
+                            <!-- Tailwind CSS table -->
+                            <div class="flex flex-col">
+                            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                    <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Name
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Icon
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Description
+                                        </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        @foreach ($externalServices as $externalService)
+                                            <tr>
+
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                    {{ $externalService->name }}
+                                                </td>
+
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                    {{ $externalService->icon }}
+                                                </td>
+
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                    {{ $externalService->description }}
+                                                </td>
+
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                                    <a href="{{ route('service.edit', $externalService->id) }}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
+                                                    <form class="inline-block" action="{{ route('service.destroy', $externalService->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                         <input type="hidden" name="_method" value="DELETE"> 
+                                                         <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}">   -->
+                                                        <input type="submit" class="text-red-600 hover:text-red-900 mb-2 mr-2" value="Delete">
+                                                    </form>
+                                                    
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                    </table>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                            <!-- Tailwind CSS table -->
                         </div>
                     </div>
                 </div>

@@ -14,8 +14,8 @@ class ExternalServiceController extends Controller
      */
     public function index()
     {
-        $externalService = ExternalService::all();
-        return view('ExternalService.index', compact('externalService'));
+        $externalServices = ExternalService::all();
+        return view('ExternalService.index', compact('externalServices'));
     }
 
     /**
@@ -36,8 +36,12 @@ class ExternalServiceController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'name' => 'required',
+            'description' => 'required',
+        ]);
         ExternalService::create($request->all());
-        return redirect()->route('ExternalService');
+        return redirect()->route('service');
     }
 
     /**
@@ -57,7 +61,7 @@ class ExternalServiceController extends Controller
      * @param  \App\Models\ExternalService  $externalService
      * @return \Illuminate\Http\Response
      */
-    public function edit(ExternalService $externalService)
+    public function edit(ExternalService $externalService, $id)
     {
         $externalService = ExternalService::find($id);
         return view('ExternalService.edit',compact('externalService'));
@@ -78,10 +82,11 @@ class ExternalServiceController extends Controller
         ]);
         $externalService = ExternalService::find($id);
         $externalService->name=$request->name;
+        $externalService->icon=$request->icon;
         $externalService->description=$request->description;
         $externalService->save();
 
-        return redirect()->route('ExternalService')
+        return redirect()->route('service')
                         ->with('success','FAQ updated successfully');
     }
 
@@ -96,7 +101,7 @@ class ExternalServiceController extends Controller
         $externalService = ExternalService::find($id);
         $externalService->delete();
         
-        return redirect()->route('ExternalService')
+        return redirect()->route('service')
                         ->with('success','Contact deleted successfully');
     }
 }

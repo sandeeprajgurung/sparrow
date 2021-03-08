@@ -16,8 +16,8 @@ class CreateExternalServiceTable extends Migration
         Schema::create('external_service', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('icon');
-            $table->string('description');
+            $table->string('icon')->nullable();
+            $table->LONGTEXT('description');
             $table->timestamps();
         });
     }
