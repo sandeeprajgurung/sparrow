@@ -8,6 +8,7 @@ use App\Http\Controllers\FAQController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\ExternalServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,4 +60,11 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/content/testimonial', [T
 Route::middleware(['auth:sanctum', 'verified'])->delete('/content/testimonial/{id}', [TestimonialController::class, 'destroy'])->name('testimonial.destroy');
 Route::middleware(['auth:sanctum', 'verified'])->get('/content/testimonial/{id}', [TestimonialController::class, 'edit'])->name('testimonial.edit');
 Route::middleware(['auth:sanctum', 'verified'])->put('/content/testimonial/{id}', [TestimonialController::class, 'update'])->name('testimonial.update');
+
+//Testimonial
+Route::middleware(['auth:sanctum', 'verified'])->get('/content/testimonial', [ExternalServiceController::class, 'index'])->name('testimonial');
+Route::middleware(['auth:sanctum', 'verified'])->post('/content/testimonial', [ExternalServiceController::class, 'store'])->name('testimonial.store');
+Route::middleware(['auth:sanctum', 'verified'])->delete('/content/testimonial/{id}', [ExternalServiceController::class, 'destroy'])->name('testimonial.destroy');
+Route::middleware(['auth:sanctum', 'verified'])->get('/content/testimonial/{id}', [ExternalServiceController::class, 'edit'])->name('testimonial.edit');
+Route::middleware(['auth:sanctum', 'verified'])->put('/content/testimonial/{id}', [ExternalServiceController::class, 'update'])->name('testimonial.update');
 
