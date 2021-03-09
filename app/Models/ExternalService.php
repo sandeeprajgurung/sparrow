@@ -10,4 +10,8 @@ class ExternalService extends Model
     use HasFactory;
     protected $table = 'external_service';
     protected $fillable = ['name', 'description'];
+
+    // public function ExternalServiceDetail(){
+    //     return $this->hasMany(ExternalServiceDetail,'external_service_detail','external_service_id');
+    // }
 }

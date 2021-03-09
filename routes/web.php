@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ExternalServiceController;
+use App\Http\Controllers\ExternalServiceDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,10 +62,17 @@ Route::middleware(['auth:sanctum', 'verified'])->delete('/content/testimonial/{i
 Route::middleware(['auth:sanctum', 'verified'])->get('/content/testimonial/{id}', [TestimonialController::class, 'edit'])->name('testimonial.edit');
 Route::middleware(['auth:sanctum', 'verified'])->put('/content/testimonial/{id}', [TestimonialController::class, 'update'])->name('testimonial.update');
 
-//Testimonial
+//External Service
 Route::middleware(['auth:sanctum', 'verified'])->get('/content/service', [ExternalServiceController::class, 'index'])->name('service');
 Route::middleware(['auth:sanctum', 'verified'])->post('/content/service', [ExternalServiceController::class, 'store'])->name('service.store');
 Route::middleware(['auth:sanctum', 'verified'])->delete('/content/service/{id}', [ExternalServiceController::class, 'destroy'])->name('service.destroy');
 Route::middleware(['auth:sanctum', 'verified'])->get('/content/service/{id}', [ExternalServiceController::class, 'edit'])->name('service.edit');
 Route::middleware(['auth:sanctum', 'verified'])->put('/content/service/{id}', [ExternalServiceController::class, 'update'])->name('service.update');
+
+//External Service Details
+Route::middleware(['auth:sanctum', 'verified'])->get('/content/servicedetail', [ExternalServiceDetailController::class, 'index'])->name('servicedetail');
+Route::middleware(['auth:sanctum', 'verified'])->post('/content/servicedetail', [ExternalServiceDetailController::class, 'store'])->name('servicedetail.store');
+Route::middleware(['auth:sanctum', 'verified'])->delete('/content/servicedetail/{id}', [ExternalServiceDetailController::class, 'destroy'])->name('servicedetail.destroy');
+Route::middleware(['auth:sanctum', 'verified'])->get('/content/servicedetail/{id}', [ExternalServiceDetailController::class, 'edit'])->name('servicedetail.edit');
+Route::middleware(['auth:sanctum', 'verified'])->put('/content/servicedetail/{id}', [ExternalServiceDetailController::class, 'update'])->name('servicedetail.update');
 
