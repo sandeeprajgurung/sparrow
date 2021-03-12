@@ -118,8 +118,8 @@
                                 <div class="col-span-6 mb-6">
                                     <label for="description"
                                         class="block text-sm font-medium text-gray-700">Description</label>
-                                    <input type="text" name="description" id="description"
-                                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+
+                                        <textarea class="form-control" id="description" name="description"></textarea>
                                 </div>
                                 
                                 <div class="my-5">
@@ -153,6 +153,9 @@
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Description
                                         </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Action
+                                        </th>
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
@@ -164,7 +167,7 @@
                                                 </td>
 
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                    {{ $externalService->icon }}
+                                                    <i class="{{ $externalService->icon }}" style="font-size:24px;"></i>
                                                 </td>
 
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -197,4 +200,8 @@
                 </div>
             </div>
         </div>
+        <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+        <script>
+            CKEDITOR.replace( 'description' );
+        </script>
 </x-app-layout>

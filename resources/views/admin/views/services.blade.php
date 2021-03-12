@@ -13,6 +13,12 @@
                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
         </div>
 
+        <div class="col-span-6 mb-6">
+            <label for="icon" class="block text-sm font-medium text-gray-700">Icon</label>
+            <input type="text" name="icon" id="icon"
+                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+        </div>
+
         <div class="my-5">
             <button type="submit"
                 class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -29,6 +35,7 @@
             <div class="services-review-block">
                 <p>{{ $service->title }}</p>
                 <p>{{ $service->description }}</p>
+                <p>{{ $service->icon }}</p>
             </div>
             @endforeach
         </div>

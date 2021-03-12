@@ -40,6 +40,7 @@ class ServicesController extends Controller
         $content = new Service ([
             'title' => $request->get('title'),
             'description' => $request->get('description'),
+            'icon' => $request->get('icon'),
         ]);
         $content->link = Str::slug($request->get('title'), '-');
         $content->save();
