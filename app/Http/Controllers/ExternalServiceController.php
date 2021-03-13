@@ -40,7 +40,7 @@ class ExternalServiceController extends Controller
             'name' => 'required',
             'description' => 'required',
         ]);
-        // ExternalService::create($request->all());
+        ExternalService::create($request->all());
         return redirect()->route('service');
     }
 

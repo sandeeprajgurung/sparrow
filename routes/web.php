@@ -10,6 +10,7 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ExternalServiceController;
 use App\Http\Controllers\ExternalServiceDetailController;
+use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,4 +76,12 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/content/servicedetail', 
 Route::middleware(['auth:sanctum', 'verified'])->delete('/content/servicedetail/{id}', [ExternalServiceDetailController::class, 'destroy'])->name('servicedetail.destroy');
 Route::middleware(['auth:sanctum', 'verified'])->get('/content/servicedetail/{id}', [ExternalServiceDetailController::class, 'edit'])->name('servicedetail.edit');
 Route::middleware(['auth:sanctum', 'verified'])->put('/content/servicedetail/{id}', [ExternalServiceDetailController::class, 'update'])->name('servicedetail.update');
+
+//About Us
+Route::middleware(['auth:sanctum', 'verified'])->get('/content/about', [AboutController::class, 'index'])->name('about');
+Route::middleware(['auth:sanctum', 'verified'])->post('/content/about', [AboutController::class, 'store'])->name('about.store');
+Route::middleware(['auth:sanctum', 'verified'])->delete('/content/about/{id}', [AboutController::class, 'destroy'])->name('about.destroy');
+Route::middleware(['auth:sanctum', 'verified'])->get('/content/about/{id}', [AboutController::class, 'edit'])->name('about.edit');
+Route::middleware(['auth:sanctum', 'verified'])->put('/content/about/{id}', [AboutController::class, 'update'])->name('about.update');
+Route::middleware(['auth:sanctum', 'verified'])->put('/content/about/status/{id}', [AboutController::class, 'updateStatus'])->name('about.updateStatus');
 
