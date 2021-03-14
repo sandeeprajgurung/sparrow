@@ -17,8 +17,8 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->string('title');
             $table->LONGTEXT('description');
-            $table->string('link');
             $table->string('icon');
+            $table->string('file_upload');
             $table->timestamps();
         });
     }
