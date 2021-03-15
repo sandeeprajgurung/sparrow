@@ -27,14 +27,14 @@
                             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-gray-200 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                 href="#">Home</a>
                             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                                href="{{ route('about') }}">About</a>
+                                href="{{ route('content.about') }}">About</a>
                             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                 href="{{ route('content.services') }}">Services</a>
 
                             <div @click.away="open = false" class="relative" x-data="{ open: false }">
                                 <button @click="open = !open"
                                     class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                                    <a href="{{ route('service') }}">External Services</a>
+                                    <a href="{{ route('content.service') }}">External Services</a>
                                     <svg fill="currentColor" viewBox="0 0 20 20"
                                         :class="{'rotate-180': open, 'rotate-0': !open}"
                                         class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
@@ -52,7 +52,7 @@
                                     class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg">
                                     <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
                                         <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                                            href="{{ route('servicedetail') }}">External Service Details</a>
+                                            href="{{ route('content.servicedetail') }}">External Service Details</a>
                                     </div>
                                 </div>
                             </div>
@@ -60,13 +60,13 @@
                             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                 href="#">Protfolio</a>
                             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                                href="{{ route('team') }}">Team</a>
+                                href="{{ route('content.team') }}">Team</a>
                             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                                href="{{ route('testimonial') }}">Testimonial</a>
+                                href="{{ route('content.testimonial') }}">Testimonial</a>
                             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                                href="{{ route('faq') }}">FAQ</a>
+                                href="{{ route('content.faq') }}">FAQ</a>
                             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                                href="{{ route('contact') }}">Contact</a>
+                                href="{{ route('content.contact') }}">Contact</a>
                             <div @click.away="open = false" class="relative" x-data="{ open: false }">
                                 <button @click="open = !open"
                                     class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
@@ -101,12 +101,56 @@
                     <div
                         class="flex flex-col w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            @if(request()->routeIs('content.index'))
-                                @include('admin.views.home') 
+                            @if (request()->routeIs('content.index'))
+                                @include('admin.views.home')
                             @endif
-                            @if(request()->routeIs('content.services'))
-                                @include('admin.views.services') 
+
+                            @if (request()->routeIs('content.services'))
+                                @include('admin.views.services')
                             @endif
+
+                            @if (request()->routeIs('content.about'))
+                                @include('about.index')
+                            @elseif (request()->routeIs('content.about.edit'))
+                                @include('about.edit')
+                            @endif
+
+                            @if (request()->routeIs('content.service'))
+                                @include('ExternalService.index')
+                            @elseif (request()->routeIs('content.service.edit'))
+                                @include('ExternalService.edit')
+                            @endif
+
+                            @if (request()->routeIs('content.servicedetail'))
+                                @include('servicedetail.index')
+                            @elseif (request()->routeIs('servicedetail.edit'))
+                                @include('servicedetail.edit')
+                            @endif
+
+                            @if (request()->routeIs('content.team'))
+                                @include('team.index')
+                            @elseif (request()->routeIs('team.edit'))
+                                @include('team.edit')
+                            @endif
+
+                            @if (request()->routeIs('content.testimonial'))
+                                @include('testimonial.index')
+                            @elseif (request()->routeIs('testimonial.edit'))
+                                @include('testimonial.edit')
+                            @endif
+
+                            @if (request()->routeIs('content.faq'))
+                                @include('faq.index')
+                            @elseif (request()->routeIs('faq.edit'))
+                                @include('faq.edit')
+                            @endif
+
+                            @if (request()->routeIs('content.contact'))
+                                @include('contact.index')
+                            @elseif (request()->routeIs('contact.edit'))
+                                @include('contact.edit')
+                            @endif
+
                         </div>
                     </div>
                 </div>

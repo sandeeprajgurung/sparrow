@@ -15,12 +15,11 @@ class ContactController extends Controller
     public function index()
     {
         $contact = Contact::all();
-        
         if($contact->isEmpty()){
-            return view('contact.index', compact('contact'));
+            return view('admin.views.content', compact('contact'));
         }else{
-            //$contact = Contact::all();
-            return view('contact.edit', compact('contact'));
+            $contact = new Contact;
+            $this->edit($contact);
         }
         
     }
@@ -44,7 +43,7 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         Contact::create($request->all());
-        return redirect()->route('contact');
+        return redirect()->route('content.contact');
     }
 
     /**
@@ -55,7 +54,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        return view('contact.index', compact('contact'));
+        return view('content.contact', compact('contact'));
     }
 
     /**
@@ -66,7 +65,8 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        return view('contact.edit',compact('contact'));
+        $contact = Contact::all();
+        return view('admin.views.content',compact('contact'));
     }
 
     /**
@@ -91,7 +91,7 @@ class ContactController extends Controller
         $contact->phone=$request->phone;
         $contact->save();
 
-        return redirect()->route('contact')
+        return redirect()->route('content.contact')
                         ->with('success','Contact updated successfully');
     }
 
@@ -104,7 +104,7 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         $contact->delete();
-        return redirect()->route('contact.index')
+        return redirect()->route('content.contact')
                         ->with('success','Contact deleted successfully');
     }
 }

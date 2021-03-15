@@ -19,7 +19,7 @@ class ExternalServiceDetailController extends Controller
         $externalServiceDetails = ExternalServiceDetail::join('external_service', 'external_service_detail.external_service_id', '=', 'external_service.id')
                ->get(['external_service_detail.id', 'external_service.name AS servicename', 'external_service_detail.name', 'external_service_detail.description', 'external_service_detail.image']);
         $externalServices = ExternalService::all('id','name');
-        return view('servicedetail.index', compact('externalServiceDetails', 'externalServices'));
+        return view('admin.views.content', compact('externalServiceDetails', 'externalServices'));
     }
 
     /**
@@ -88,7 +88,7 @@ class ExternalServiceDetailController extends Controller
         $externalServices = ExternalService::all('id','name')
                             ->where('id', '!=', $externalServiceDetail->external_service_id);
                             
-        return view('servicedetail.edit',compact('externalServiceDetail', 'externalServicesById', 'externalServices'));
+        return view('admin.views.content',compact('externalServiceDetail', 'externalServicesById', 'externalServices'));
     }
 
     /**
@@ -124,7 +124,7 @@ class ExternalServiceDetailController extends Controller
         $externalServiceDetail->description = $request->description;
         $externalServiceDetail->save();
 
-        return redirect()->route('servicedetail');
+        return redirect()->route('content.servicedetail');
     }
 
     /**
@@ -139,7 +139,7 @@ class ExternalServiceDetailController extends Controller
         if($externalServiceDetail->image)
             \Storage::delete('/public/' . $externalServiceDetail->image);
         $externalServiceDetail -> delete();
-        return redirect()->route('servicedetail')
+        return redirect()->route('content.servicedetail')
                         ->with('success','deleted successfully');
     }
 }

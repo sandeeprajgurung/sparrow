@@ -15,7 +15,7 @@ class ExternalServiceController extends Controller
     public function index()
     {
         $externalServices = ExternalService::all();
-        return view('ExternalService.index', compact('externalServices'));
+        return view('admin.views.content', compact('externalServices'));
     }
 
     /**
@@ -41,7 +41,7 @@ class ExternalServiceController extends Controller
             'description' => 'required',
         ]);
         ExternalService::create($request->all());
-        return redirect()->route('service');
+        return redirect()->route('content.service');
     }
 
     /**
@@ -64,7 +64,7 @@ class ExternalServiceController extends Controller
     public function edit(ExternalService $externalService, $id)
     {
         $externalService = ExternalService::find($id);
-        return view('ExternalService.edit',compact('externalService'));
+        return view('admin.views.content',compact('externalService'));
     }
 
     /**
@@ -86,7 +86,7 @@ class ExternalServiceController extends Controller
         $externalService->description=$request->description;
         $externalService->save();
 
-        return redirect()->route('service')
+        return redirect()->route('content.service')
                         ->with('success','FAQ updated successfully');
     }
 
@@ -101,7 +101,7 @@ class ExternalServiceController extends Controller
         $externalService = ExternalService::find($id);
         $externalService->delete();
         
-        return redirect()->route('service')
+        return redirect()->route('content.service')
                         ->with('success','Contact deleted successfully');
     }
 }

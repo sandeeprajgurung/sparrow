@@ -17,7 +17,7 @@ class TeamController extends Controller
     public function index()
     {
         $teams = Team::all();
-        return view('team.index', compact('teams'));
+        return view('admin.views.content', compact('teams'));
     }
 
     /**
@@ -81,7 +81,7 @@ class TeamController extends Controller
     public function edit(Team $team, $id)
     {
         $team = Team::find($id);
-        return view('team.edit',compact('team'));
+        return view('admin.views.content',compact('team'));
     }
 
     /**
@@ -116,7 +116,7 @@ class TeamController extends Controller
         $team->designation = $request->designation;
         $team->save();
 
-        return redirect()->route('team');
+        return redirect()->route('content.team');
     }
 
     /**
@@ -132,7 +132,7 @@ class TeamController extends Controller
         if($team->image)
             \Storage::delete('/public/' . $team->image);
         $team -> delete();
-        return redirect()->route('team')
+        return redirect()->route('content.team')
                         ->with('success','deleted successfully');
     }
 }

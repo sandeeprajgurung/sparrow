@@ -15,7 +15,7 @@ class FAQController extends Controller
     public function index()
     {
         $faqs = FAQ::all();
-        return view('faq.index', compact('faqs'));
+        return view('admin.views.content', compact('faqs'));
         
     }
 
@@ -38,7 +38,7 @@ class FAQController extends Controller
     public function store(Request $request)
     {
         FAQ::create($request->all());
-        return redirect()->route('faq');
+        return redirect()->route('content.faq');
     }
 
     /**
@@ -61,7 +61,7 @@ class FAQController extends Controller
     public function edit(FAQ $fAQ, $id)
     {
         $faq = FAQ::find($id);
-        return view('faq.edit',compact('faq'));
+        return view('admin.views.content',compact('faq'));
     }
 
     /**
@@ -82,7 +82,7 @@ class FAQController extends Controller
         $faq->answer=$request->answer;
         $faq->save();
 
-        return redirect()->route('faq')
+        return redirect()->route('content.faq')
                         ->with('success','FAQ updated successfully');
     }
 
@@ -97,7 +97,7 @@ class FAQController extends Controller
         $faq = FAQ::find($id);
         $faq->delete();
         
-        return redirect()->route('faq')
+        return redirect()->route('content.faq')
                         ->with('success','Contact deleted successfully');
     }
 }

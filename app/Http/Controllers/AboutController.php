@@ -15,7 +15,7 @@ class AboutController extends Controller
     public function index()
     {
         $abouts = About::get();
-        return view('about.index', compact('abouts'));
+        return view('admin.views.content', compact('abouts'));
     }
 
     /**
@@ -49,7 +49,7 @@ class AboutController extends Controller
         $about->status=(count($about::get()) == 0 ? 1:0);
         $about->save();
 
-        return redirect()->route('about');
+        return redirect()->route('content.about');
     }
 
     /**
@@ -72,7 +72,7 @@ class AboutController extends Controller
     public function edit(About $about, $id)
     {
         $about = About::find($id);
-        return view('about.edit',compact('about'));
+        return view('admin.views.content',compact('about'));
     }
     public function updateStatus(Request $request, $id)
     {
@@ -90,7 +90,7 @@ class AboutController extends Controller
         // return view('about.index', compact('abouts'));
         // return redirect()->route('about')
         //                 ->with('success','Updated successfully');
-        return redirect()->to('about');
+        return redirect()->to('content.about');
     }
     /**
      * Update the specified resource in storage.
@@ -113,7 +113,7 @@ class AboutController extends Controller
         $about->content=$request->content;
         $about->save();
 
-        return redirect()->route('about')
+        return redirect()->route('content.about')
                         ->with('success','Updated successfully');
     }
 
@@ -128,7 +128,7 @@ class AboutController extends Controller
         $about = About::find($id);
         $about->delete();
         
-        return redirect()->route('about')
+        return redirect()->route('content.about')
                         ->with('success','Deleted successfully');
     }
 }

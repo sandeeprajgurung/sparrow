@@ -15,7 +15,7 @@ class TestimonialController extends Controller
     public function index()
     {
         $testimonials = Testimonial::all();
-        return view('testimonial.index', compact('testimonials'));
+        return view('admin.views.content', compact('testimonials'));
     }
 
     /**
@@ -56,7 +56,7 @@ class TestimonialController extends Controller
         $testimonial->statement = $request->statement;
         $testimonial->save();
 
-        return redirect()->route('testimonial');
+        return redirect()->route('content.testimonial');
     }
 
     /**
@@ -79,7 +79,7 @@ class TestimonialController extends Controller
     public function edit(Testimonial $testimonial, $id)
     {
         $testimonial = Testimonial::find($id);
-        return view('testimonial.edit',compact('testimonial'));
+        return view('admin.views.content',compact('testimonial'));
     }
 
     /**
@@ -115,7 +115,7 @@ class TestimonialController extends Controller
         $testimonial->statement = $request->statement;
         $testimonial->save();
 
-        return redirect()->route('testimonial');
+        return redirect()->route('content.testimonial');
     }
 
     /**
@@ -130,6 +130,6 @@ class TestimonialController extends Controller
         if($testimonial->image)
             \Storage::delete('/public/' . $testimonial->image);
         $testimonial -> delete();
-        return redirect()->route('testimonial');
+        return redirect()->route('content.testimonial');
     }
 }
