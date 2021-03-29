@@ -2935,6 +2935,7 @@
             </div>
         </section><!-- End Clients Section -->
 
+        @if($about)
         <!-- ======= About Section ======= -->
         <section id="about" class="about section-bg">
             <div class="container" data-aos="fade-up">
@@ -2945,18 +2946,18 @@
                 <div class="row no-gutters">
                     <div class="content col-xl-5 d-flex align-items-stretch">
                         <div class="content">
-                            <h3>Voluptatem dignissimos provident quasi</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                            </p>
+                            <h3>{{ $about->first()->title }}</h3>
+                            <p>{{ $about->first()->description }}</p>
                             <a href="#" class="about-btn"><span>About us</span> <i class="bx bx-chevron-right"></i></a>
                         </div>
                     </div>
                     <div class="col-xl-7 d-flex align-items-stretch">
                         <div class="icon-boxes d-flex flex-column justify-content-center">
                             <div class="row">
-                                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+                                <p>
+                                    {!! $about->first()->content !!}                                
+                                </p>
+                                {{-- <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
                                     <i class="bx bx-receipt"></i>
                                     <h4>Corporis voluptates sit</h4>
                                     <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip
@@ -2977,14 +2978,16 @@
                                     <i class="bx bx-shield"></i>
                                     <h4>Beatae veritatis</h4>
                                     <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-                                </div>
+                                </div> --}}
                             </div>
                         </div><!-- End .content-->
                     </div>
                 </div>
 
             </div>
-        </section><!-- End About Section -->
+        </section>
+        <!-- End About Section -->
+        @endif
 
         <!-- ======= Counts Section ======= -->
         {{-- <section id="counts" class="counts">
@@ -3409,6 +3412,7 @@
 </section> --}}
         <!-- End Portfolio Section -->
 
+        @if($testimonials)
         <!-- ======= Testimonials Section ======= -->
         <section id="testimonials" class="testimonials">
             <div class="container" data-aos="fade-up">
@@ -3424,23 +3428,22 @@
                 <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
                     <div class="col-xl-10">
                         <div class="owl-carousel testimonials-carousel">
-
+                            @foreach($testimonials as $testimonial)
                             <div class="testimonial-wrap">
                                 <div class="testimonial-item">
                                     <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                                    <h3>Saul Goodman</h3>
-                                    <h4>Ceo &amp; Founder</h4>
+                                    <h3>{{ $testimonial->name }}</h3>
+                                    <h4>{{ $testimonial->organization }}</h4>
                                     <p>
                                         <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                        Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit
-                                        rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam,
-                                        risus at semper.
+                                        {{ $testimonial->statement }}
                                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                     </p>
                                 </div>
                             </div>
+                            @endforeach
 
-                            <div class="testimonial-wrap">
+                            {{-- <div class="testimonial-wrap">
                                 <div class="testimonial-item">
                                     <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
                                     <h3>Sara Wilsson</h3>
@@ -3498,14 +3501,16 @@
                                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                     </p>
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>
                 </div>
 
             </div>
-        </section><!-- End Testimonials Section -->
+        </section>
+        <!-- End Testimonials Section -->
+        @endif
 
         <!-- ======= Pricing Section ======= -->
         {{-- <section id="pricing" class="pricing section-bg">
